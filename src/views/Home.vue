@@ -19,7 +19,7 @@ div {
   flex-direction: column;
   align-items: start;
   text-align: start;
-  gap: 16px;
+  gap: 8px;
 }
 
 h1 {
@@ -30,5 +30,6 @@ h1 {
 
 p {
   margin: 0px;
+  color: #b9b9b9;
 }
 </style>
