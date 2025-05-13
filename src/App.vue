@@ -24,6 +24,10 @@
               <li class="submenu-item">
                 <router-link to="/todolist" class="submenu-link">Todo List</router-link>
               </li>
+              <li class="submenu-item">
+                <router-link to="/filterableproduct" class="submenu-link">Filterable Product List
+                </router-link>
+              </li>
             </ul>
           </template>
         </li>

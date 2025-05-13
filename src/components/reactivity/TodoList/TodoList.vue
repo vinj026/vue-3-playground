@@ -75,7 +75,6 @@ const handleRemove = (id) => {
   min-height: 45vh;
   padding: 16px;
   color: #ffffff;
-  /* Teks putih */
   font-family: "Segoe UI", sans-serif;
   border-radius: 12px;
 }
@@ -95,15 +94,12 @@ const handleRemove = (id) => {
   outline: none;
   font-size: 1rem;
   background-color: #2d2d2d;
-  /* Latar belakang input */
   color: #ffffff;
-  /* Teks putih */
   transition: all 0.3s ease;
 }
 
 .inputSection input:focus {
   box-shadow: 0 0 0 3px rgba(66, 185, 131, 0.3);
-  /* Efek focus hijau muda */
 }
 
 .inputSection button {
