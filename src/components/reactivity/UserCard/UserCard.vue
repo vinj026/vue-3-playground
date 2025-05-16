@@ -7,51 +7,33 @@ const user = reactive({
   lastActive: null,
   status: "Online",
   updateStatus() {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const _date = String(date.getDate()).padStart(2, "0");
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
-
-    user.lastActive = `${_date}-${month}-${year}T${hour}:${minute}:${second}`;
+    user.lastActive = Date.now();
   },
 });
 
-const convertTimeStrtoInt = () => {
-  const timeStr_ = user.lastActive.split("T")[1];
-  const [h, m, s] = timeStr_.split(":").map(Number);
-  return m * 60 + s;
+let timerInactive;
+const interaction = reactive({});
+const handleInteraction = (type, event) => {
+  interaction.Eventtype = type;
+  interaction.xy = `${event.x} : ${event.y}`;
+  user.updateStatus();
+  clearTimeout(timerInactive);
+  timerInactive = setTimeout(() => {
+    user.status = "Offline";
+  }, 5000);
 };
 
-let firstMinutesOnline;
 onMounted(() => {
   user.updateStatus();
-  firstMinutesOnline = convertTimeStrtoInt();
-  setTimeout(() => {
-    user.updateStatus();
-  }, 10000);
+  window.addEventListener("click", (e) => handleInteraction("click", e));
+  window.addEventListener("mousemove", (e) =>
+    handleInteraction("mousemove", e),
+  );
 });
 
-const statusCounter = computed(() => {
-  const lastMinutesOnline = convertTimeStrtoInt();
-  const endTime = 10;
-
-  lastMinutesOnline - firstMinutesOnline === endTime
-    ? (user.status = "Offline")
-    : (user.status = "Online");
-
-  return lastMinutesOnline;
+watch(user, () => {
+  console.log(`Last Active ${user.lastActive}`);
 });
-
-watch(
-  () => user.lastActive,
-  () => {
-    console.log(`First Min: ${firstMinutesOnline}`);
-    console.log(`Last Min: ${statusCounter.value}`);
-  },
-);
 </script>
 
 <template>
