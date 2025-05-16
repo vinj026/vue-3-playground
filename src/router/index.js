@@ -4,6 +4,8 @@ import CounterButton from "@/components/reactivity/CounterButton/CounterButton.v
 import CounterButtonAlt1 from "@/components/reactivity/CounterButton/CounterButtonAlt1.vue";
 import TodoList from "@/components/reactivity/TodoList/TodoList.vue";
 import FilterableProduct from "@/components/reactivity/FilterableProduct/FilterableProduct.vue";
+import UserCard from "@/components/reactivity/UserCard/UserCard.vue";
+
 const routes = [
   {
     path: "/",
@@ -34,6 +36,13 @@ const routes = [
     component: FilterableProduct,
     meta: { hideOtherMenus: true, centeredLayout: true }, // Menambahkan meta untuk menyembunyikan menu lain
   },
+  {
+    path: "/UserCard",
+    name: "UserCard",
+    component: UserCard,
+    meta: { hideOtherMenus: true, centeredLayout: true }, // Menambahkan meta untuk menyembunyikan menu lain
+  }
+
 ];
 
 const router = createRouter({

@@ -12,20 +12,42 @@
         <!-- Group: Reactive -->
         <li class="menu-group">
           <template v-if="!hideOtherMenus">
-            <span class="menu-group-title">Reactive</span>
+            <span class="menu-group-title">Reactivity Basic</span>
             <ul class="submenu">
               <!-- Submenu Items -->
               <li class="submenu-item">
-                <router-link to="/counter" class="submenu-link">Counter Button</router-link>
+                <router-link to="/counter" class="submenu-link"
+                  >Counter Button</router-link
+                >
               </li>
               <li class="submenu-item">
-                <router-link to="/counteralt1" class="submenu-link">Counter Button Alternative 1</router-link>
+                <router-link to="/counteralt1" class="submenu-link"
+                  >Counter Button Alternative 1</router-link
+                >
               </li>
+            </ul>
+            <span class="menu-group-title">Components & Communication</span>
+            <ul class="submenu">
               <li class="submenu-item">
-                <router-link to="/todolist" class="submenu-link">Todo List</router-link>
+                <router-link to="/todolist" class="submenu-link"
+                  >Todo List</router-link
+                >
               </li>
+
               <li class="submenu-item">
-                <router-link to="/filterableproduct" class="submenu-link">Filterable Product List
+                <router-link to="/usercard" class="submenu-link"
+                  >User Card
+                </router-link>
+              </li>
+            </ul>
+            <span class="menu-group-title"
+              >State Management & Reactivity Advanced</span
+            >
+            <ul class="submenu">
+              <!-- Submenu Items -->
+              <li class="submenu-item">
+                <router-link to="/filterableproduct" class="submenu-link"
+                  >Filterable Product List
                 </router-link>
               </li>
             </ul>
