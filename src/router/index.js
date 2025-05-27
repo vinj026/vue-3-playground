@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CounterButton from "../views/CounterButton.vue";
 import CounterButtonAlt1 from "../views/CounterButtonAlt1.vue";
+import TodoList from "../views/TodoList.vue";
 
 const routes = [
   {
@@ -20,6 +21,12 @@ const routes = [
     path: "/counteralt1",
     name: "CounterButtonAlt1",
     component: CounterButtonAlt1,
+    meta: { hideOtherMenus: true, centeredLayout: true },
+  },
+  {
+    path: "/todolist",
+    name: "TodoList",
+    component: TodoList,
     meta: { hideOtherMenus: true, centeredLayout: true },
   },
 ];
