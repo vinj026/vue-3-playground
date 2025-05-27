@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import CounterButton from "../views/CounterButton.vue";
 import CounterButtonAlt1 from "../views/CounterButtonAlt1.vue";
 import TodoList from "../views/TodoList.vue";
-
+import UserCard from "../views/UserCard.vue";
 const routes = [
   {
     path: "/",
@@ -27,6 +27,12 @@ const routes = [
     path: "/todolist",
     name: "TodoList",
     component: TodoList,
+    meta: { hideOtherMenus: true, centeredLayout: true },
+  },
+  {
+    path: "/usercard",
+    name: "UserCard",
+    component: UserCard,
     meta: { hideOtherMenus: true, centeredLayout: true },
   },
 ];
