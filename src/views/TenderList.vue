@@ -9,7 +9,7 @@ onMounted(async () => {
   isLoading.value = true;
   error.value = null;
   try {
-    const res = await fetch("https://tenders.guru");
+    const res = await fetch("https://tenders.guru/api/pl/tenders");
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
     tenderList.value = data.data.slice(0, 10);
