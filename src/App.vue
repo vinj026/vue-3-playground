@@ -17,6 +17,10 @@ const menuList = [
       { name: "User Card", path: "/usercard" },
     ],
   },
+  {
+    name: "State Management & Advanced Reactivity",
+    children: [{ name: "Filterable Product", path: "/filterableproduct" }],
+  },
 ];
 
 const route = useRoute();
