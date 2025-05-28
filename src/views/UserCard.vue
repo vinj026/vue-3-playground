@@ -67,7 +67,7 @@ watch(user, () => {
 
 <template>
   <div
-    class="flex gap-4 w-fit bg-surface-container text-on-surface rounded-xl p-4 items-center justify-center"
+    class="flex gap-4 bg-surface-container text-on-surface rounded-xl p-4 items-center justify-center"
   >
     <img :src="user.avatar" width="75px" />
     <div class="flex flex-col justify-center gap-2 h-full">

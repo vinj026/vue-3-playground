@@ -1,6 +1,5 @@
 <script setup>
-import { computed } from "vue";
-import { ref, watchEffect } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 
 const menuList = [
@@ -33,34 +32,57 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="flex flex-col bg-background w-full h-screen justify-center px-24"
-    :class="isCentered ? 'items-center' : 'items-start '">
+  <div
+    class="min-h-screen w-full bg-background text-on-surface flex flex-col items-center justify-center px-6 py-12 transition-all"
+    :class="isCentered ? 'justify-center' : 'justify-start pt-24'"
+  >
     <router-view />
 
-    <nav class="text-on-surface-variant text-bas mt-8 flex flex-col gap-2">
-      <router-link to="/" class="font-bold text-on-surface-variant hover:underline">
-        Home
-      </router-link>
-
-      <ul v-if="!hideOtherMenus">
-        <li class="mb-4" v-for="item in menuList" :key="item.name">
-          <template v-if="item.children">
-            <span class="font-bold">{{ item.name }}</span>
-            <ul class="ml-4">
-              <li v-for="sub in item.children" :key="sub.path">
-                <router-link :to="sub.path">{{ sub.name }}</router-link>
-              </li>
-            </ul>
-          </template>
-          <template v-else>
-            <router-link class="font-bold" :to="item.path">{{
-              item.name
-              }}</router-link>
-          </template>
+    <nav v-if="!hideOtherMenus" class="w-full max-w-xl mt-12 animate-fade-in">
+      <ul class="space-y-6">
+        <li v-for="item in menuList" :key="item.name">
+          <p class="text-sm font-medium text-on-surface-variant mb-1">
+            {{ item.name }}
+          </p>
+          <ul class="space-y-1 pl-4 border-l border-outline">
+            <li v-for="sub in item.children" :key="sub.path">
+              <router-link
+                :to="sub.path"
+                class="text-sm hover:text-primary transition-colors"
+              >
+                {{ sub.name }}
+              </router-link>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
+
+    <div v-if="route.path !== '/'" class="w-full max-w-xl mt-10">
+      <router-link
+        to="/"
+        class="block mt-10 text-xs text-on-surface-variant hover:text-primary transition"
+      >
+        ← Back to Home
+      </router-link>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out both;
+}
+</style>
