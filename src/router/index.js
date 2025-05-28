@@ -5,7 +5,7 @@ import CounterButtonAlt1 from "../views/CounterButtonAlt1.vue";
 import TodoList from "../views/TodoList.vue";
 import UserCard from "../views/UserCard.vue";
 import FilterableProduct from "../views/FilterableProduct.vue";
-
+import TenderList from "../views/TenderList.vue";
 const routes = [
   {
     path: "/",
@@ -41,6 +41,12 @@ const routes = [
     path: "/filterableproduct",
     name: "FilterableProduct",
     component: FilterableProduct,
+    meta: { hideOtherMenus: true, centeredLayout: true },
+  },
+  {
+    path: "/tenderlist",
+    name: "Tender List",
+    component: TenderList,
     meta: { hideOtherMenus: true, centeredLayout: true },
   },
 ];
