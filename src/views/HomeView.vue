@@ -5,7 +5,7 @@
         🧑‍💻 Vue Playground
       </h1>
     </div>
-    <p class="text-on-surface text-xl">
+    <p class="text-on-surface text-justify text-xl">
       Welcome to my Vue.js learning project. This page showcases the exercises
       and components I've built while learning Vue.js. Use the menu above to
       explore each feature I've practiced so far.

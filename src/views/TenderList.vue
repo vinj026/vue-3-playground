@@ -9,7 +9,7 @@ onMounted(async () => {
   isLoading.value = true;
   error.value = null;
   try {
-    const res = await fetch("/api/tenders");
+    const res = await fetch("https://tenders.guru");
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
     tenderList.value = data.data.slice(0, 10);
@@ -25,16 +25,24 @@ onMounted(async () => {
   <div class="w-7xl">
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div v-if="isLoading" class="col-span-full flex justify-center py-16">
-        <div class="w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+        <div
+          class="w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin"
+        />
       </div>
 
-      <div v-else-if="error" class="col-span-full text-error text-sm text-center">
+      <div
+        v-else-if="error"
+        class="col-span-full text-error text-sm text-center"
+      >
         {{ error }}
       </div>
 
       <TransitionGroup name="fade" tag="div" class="contents">
-        <div v-for="tender in tenderList" :key="tender.id"
-          class="p-4 rounded-xl bg-surface-container text-on-surface transition hover:bg-surface-container-high">
+        <div
+          v-for="tender in tenderList"
+          :key="tender.id"
+          class="p-4 rounded-xl bg-surface-container text-on-surface transition hover:bg-surface-container-high"
+        >
           <h2 class="text-base font-semibold leading-tight mb-2 line-clamp-2">
             {{ tender.title }}
           </h2>
