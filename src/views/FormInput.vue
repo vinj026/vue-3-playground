@@ -51,6 +51,8 @@ const validateForm = () => {
       return acc;
     }, {});
     Contacts.value.push(addToContacts);
+    formData.value.name = "";
+    formData.value.email = "";
   }
 
   console.log(formData.value);
@@ -59,126 +61,159 @@ const validateForm = () => {
 </script>
 
 <template>
-  <div
-    class="flex items-center justify-center bg-surface transition-colors duration-300"
-  >
+  <div class="flex flex-col items-center gap-6 w-full max-w-5xl mx-auto p-4">
     <form
       @submit.prevent="validateForm"
-      class="bg-surface-container rounded-xl p-6 w-full max-w-md space-y-4 text-on-surface transition-all duration-300 ease-in-out transform shadow-md"
+      class="flex sm:flex-row items-start sm:items-center gap-4 w-full"
+      novalidate
     >
-      <div class="space-y-2 group">
-        <label
-          for="name"
-          class="block font-medium transition-colors duration-200 group-focus-within:text-primary"
-        >
-          What is your name?
-        </label>
-        <div class="relative">
+      <!-- NAME -->
+      <div class="flex w-full">
+        <div class="relative w-full">
           <input
-            type="text"
             v-model="formData.name"
+            type="text"
             id="name"
+            placeholder="Name"
             :class="[
-              'w-full bg-inverse-on-surface rounded px-3 py-2 outline-none transition-all duration-200',
-              {
-                'border-2 border-error focus:border-error': formData.error.name,
-                'border-primary focus:ring-2 focus:ring-primary':
-                  !formData.error.name,
-              },
+              ' w-full rounded px-4 py-3 outline-none text-on-surface transition-all duration-300 border',
+              formData.error.name
+                ? 'border-error bg-error-container/10'
+                : 'border-none hover:border-primary focus:border-primary focus:ring-2 focus:ring-primary',
+              'bg-surface-container',
             ]"
           />
           <transition name="fade">
-            <div v-show="formData.error.name" class="absolute -bottom-5 left-0">
-              <p class="text-error text-sm flex items-center gap-1 mt-1">
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                {{ formData.error.name }}
-              </p>
-            </div>
-          </transition>
-        </div>
-      </div>
-
-      <div class="space-y-2 group">
-        <label
-          for="email"
-          class="block font-medium transition-colors duration-200 group-focus-within:text-primary"
-        >
-          Your Email?
-        </label>
-        <div class="relative">
-          <input
-            type="email"
-            v-model="formData.email"
-            id="email"
-            :class="[
-              'w-full bg-inverse-on-surface rounded px-3 py-2 outline-none transition-all duration-200',
-              {
-                'border-2 border-error focus:border-error':
-                  formData.error.email,
-                'border-primary focus:ring-2 focus:ring-primary':
-                  !formData.error.email,
-              },
-            ]"
-          />
-          <transition name="fade">
-            <div
-              v-show="formData.error.email"
-              class="absolute -bottom-5 left-0"
+            <p
+              v-if="formData.error.name"
+              class="absolute -bottom-5 left-0 text-error text-xs flex items-center gap-1"
             >
-              <p class="text-error text-sm flex items-center gap-1 mt-1">
-                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fill-rule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                {{ formData.error.email }}
-              </p>
-            </div>
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              {{ formData.error.name }}
+            </p>
           </transition>
         </div>
       </div>
 
+      <!-- EMAIL -->
+      <div class="flex w-full">
+        <label for="email" class="sr-only">Email</label>
+        <div class="relative w-full">
+          <input
+            v-model="formData.email"
+            type="email"
+            id="email"
+            placeholder="Email"
+            :class="[
+              'w-full rounded px-4 py-3 outline-none text-on-surface transition-all duration-300 border',
+              formData.error.email
+                ? 'border-error bg-error-container/10'
+                : 'border-none hover:border-primary focus:border-primary focus:ring-2 focus:ring-primary',
+              'bg-surface-container',
+            ]"
+          />
+          <transition name="fade">
+            <p
+              v-if="formData.error.email"
+              class="absolute -bottom-5 left-0 text-error text-xs flex items-center gap-1"
+            >
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              {{ formData.error.email }}
+            </p>
+          </transition>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
       <button
         type="submit"
-        class="w-full bg-primary text-on-primary py-2 rounded mt-2 hover:bg-primary/85 transition-all duration-200 active:scale-95 relative overflow-hidden"
+        class="group bg-primary text-on-primary py-3 px-6 rounded-md hover:bg-primary/90 transition-all duration-300 active:scale-95"
       >
         <span class="relative z-10">Submit</span>
         <span
-          class="ripple absolute rounded-full w-8 h-8 bg-white/20 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          class="ripple absolute rounded-full w-8 h-8 bg-white/30 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         ></span>
       </button>
     </form>
+
+    <!-- USER CARDS -->
+    <div
+      class="w-full max-h-72 overflow-y-auto grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-2"
+    >
+      <transition-group
+        name="list"
+        tag="div"
+        class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 p-2"
+      >
+        <div
+          v-for="(user, index) in Contacts"
+          :key="index"
+          class="bg-surface-container rounded-md p-4 shadow-sm text-on-surface transform transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+        >
+          <p class="font-medium truncate">Name: {{ user.name }}</p>
+          <p class="truncate text-on-surface-variant">
+            Email: {{ user.email }}
+          </p>
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
+<style scoped>
+.fade-enter-active {
+  transition: all 0.3s ease-out;
 }
-
-.fade-enter,
-.fade-leave-to {
+.fade-enter-from {
   opacity: 0;
+  transform: translateY(-10px);
 }
 
-/* Ripple Effect */
 .ripple {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.6s ease-out;
+  opacity: 0.7;
 }
 
 button:focus-visible .ripple {
-  animation: ripple 0.6s ease-out;
+  animation: ripple 0.8s ease-out forwards;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+/* Card animations */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
