@@ -6,6 +6,7 @@ import TodoList from "../views/TodoList.vue";
 import UserCard from "../views/UserCard.vue";
 import FilterableProduct from "../views/FilterableProduct.vue";
 import TenderList from "../views/TenderList.vue";
+import FormInput from "../views/FormInput.vue";
 const routes = [
   {
     path: "/",
@@ -47,6 +48,12 @@ const routes = [
     path: "/tenderlist",
     name: "Tender List",
     component: TenderList,
+    meta: { hideOtherMenus: true, centeredLayout: true },
+  },
+  {
+    path: "/basicforminput",
+    name: "Basic Form Input",
+    component: FormInput,
     meta: { hideOtherMenus: true, centeredLayout: true },
   },
 ];

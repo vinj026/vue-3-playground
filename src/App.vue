@@ -24,6 +24,15 @@ const menuList = [
       { name: "Tender List Api", path: "/tenderlist" },
     ],
   },
+  {
+    name: "Form Handling $ Validation",
+    children: [
+      {
+        name: "Basic Form Input and Manual Validation",
+        path: "/basicforminput",
+      },
+    ],
+  },
 ];
 
 const route = useRoute();
@@ -41,7 +50,8 @@ watchEffect(() => {
 <template>
   <div
     class="min-h-screen w-full bg-background text-on-surface flex flex-col items-center justify-center px-6 py-12 transition-all"
-    :class="isCentered ? 'justify-center' : 'justify-start pt-24'">
+    :class="isCentered ? 'justify-center' : 'justify-start pt-24'"
+  >
     <router-view />
 
     <nav v-if="!hideOtherMenus" class="w-full max-w-xl mt-12 animate-fade-in">
@@ -52,7 +62,10 @@ watchEffect(() => {
           </p>
           <ul class="space-y-1 pl-4 border-l border-outline">
             <li v-for="sub in item.children" :key="sub.path">
-              <router-link :to="sub.path" class="text-sm hover:text-primary transition-colors">
+              <router-link
+                :to="sub.path"
+                class="text-sm hover:text-primary transition-colors"
+              >
                 {{ sub.name }}
               </router-link>
             </li>
@@ -62,7 +75,10 @@ watchEffect(() => {
     </nav>
 
     <div v-if="route.path !== '/'" class="w-full max-w-xl mt-10">
-      <router-link to="/" class="block mt-10 text-xs text-on-surface-variant hover:text-primary transition">
+      <router-link
+        to="/"
+        class="block mt-10 text-xs text-on-surface-variant hover:text-primary transition"
+      >
         ← Back to Home
       </router-link>
     </div>
