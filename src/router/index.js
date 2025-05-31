@@ -7,6 +7,7 @@ import UserCard from "../views/UserCard.vue";
 import FilterableProduct from "../views/FilterableProduct.vue";
 import TenderList from "../views/TenderList.vue";
 import FormInput from "../views/FormInput.vue";
+import DynamicForm from "../views/DynamicForm.vue";
 const routes = [
   {
     path: "/",
@@ -54,6 +55,12 @@ const routes = [
     path: "/basicforminput",
     name: "Basic Form Input",
     component: FormInput,
+    meta: { hideOtherMenus: true, centeredLayout: true },
+  },
+  {
+    path: "/dynamicforminput",
+    name: "Dynamic Form Input",
+    component: DynamicForm,
     meta: { hideOtherMenus: true, centeredLayout: true },
   },
 ];

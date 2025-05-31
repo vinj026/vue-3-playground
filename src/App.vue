@@ -25,11 +25,15 @@ const menuList = [
     ],
   },
   {
-    name: "Form Handling $ Validation",
+    name: "Form Handling & Validation",
     children: [
       {
         name: "Basic Form Input and Manual Validation",
         path: "/basicforminput",
+      },
+      {
+        name: "Dynamic Form Input",
+        path: "/dynamicforminput",
       },
     ],
   },
