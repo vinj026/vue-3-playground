@@ -37,6 +37,15 @@ const menuList = [
       },
     ],
   },
+  {
+    name: "UI Components & Slots",
+    children: [
+      {
+        name: "Basic Slot (Alert)",
+        path: "/basicslot",
+      },
+    ],
+  },
 ];
 
 const route = useRoute();

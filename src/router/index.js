@@ -8,6 +8,7 @@ import FilterableProduct from "../views/FilterableProduct.vue";
 import TenderList from "../views/TenderList.vue";
 import FormInput from "../views/FormInput.vue";
 import DynamicForm from "../views/DynamicForm.vue";
+import SlotsContainer from "../views/Slots/SlotsContainer.vue";
 const routes = [
   {
     path: "/",
@@ -61,6 +62,12 @@ const routes = [
     path: "/dynamicforminput",
     name: "Dynamic Form Input",
     component: DynamicForm,
+    meta: { hideOtherMenus: true, centeredLayout: true },
+  },
+  {
+    path: "/basicslot",
+    name: "Basic Slot",
+    component: SlotsContainer,
     meta: { hideOtherMenus: true, centeredLayout: true },
   },
 ];
