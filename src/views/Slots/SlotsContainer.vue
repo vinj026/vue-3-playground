@@ -28,7 +28,7 @@ watch(
     if (newVal) {
       setTimeout(() => {
         isShow.value = false;
-      }, 1000);
+      }, 2000);
     }
   },
 );
@@ -38,23 +38,38 @@ watch(
   <div class="flex gap-2">
     <button
       @click="showAlert('Error')"
-      class="bg-error text-on-error p-2 rounded-xl hover:cursor-pointer hover:bg-error/80"
+      class="bg-error text-on-error px-4 py-2 rounded-xl shadow-md hover:bg-error/80 transition"
     >
       Show Error Alert
     </button>
     <button
       @click="showAlert('Success')"
-      class="bg-primary text-on-primary p-2 rounded-xl hover:cursor-pointer hover:bg-primary/80"
+      class="bg-primary text-on-primary px-4 py-2 rounded-xl shadow-md hover:bg-primary/80 transition"
     >
       Show Success Alert
     </button>
     <button
       @click="showAlert('Info')"
-      class="bg-tertiary text-on-tertiary p-2 rounded-xl hover:cursor-pointer hover:bg-tertiary/80"
+      class="bg-tertiary text-on-tertiary px-4 py-2 rounded-xl shadow-md hover:bg-tertiary/80 transition"
     >
       Show Info Alert
     </button>
 
-    <Alert v-if="isShow" :type="alertType.type">{{ alertMsg }}</Alert>
+    <!-- Transisi dipindah ke sini -->
+    <transition name="fade-scale">
+      <Alert v-if="isShow" :type="alertType.type">{{ alertMsg }}</Alert>
+    </transition>
   </div>
 </template>
+
+<style scoped>
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: all 0.3s ease;
+}
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+</style>
